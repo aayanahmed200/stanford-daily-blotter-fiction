@@ -33,6 +33,44 @@ LOCATION_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# A qualifier that names the specific lot/building without parentheses,
+# separated from the street address by an em dash or en dash instead - e.g.
+# "295 Galvez Street, Lot 95 — Track House" rather than "295 Galvez Street
+# (Lot 95 — Track House)". Both forms show up in the real data. This matches
+# the trailing "<lot> - <building>"-style segment (no comma/parens inside
+# it) so that form also groups by the lot/building name below, instead of
+# falling back to the whole, address-bearing string.
+DASH_QUALIFIER_PATTERN = re.compile(r"([^,()]+[–—][^,()]+)$")
+
+
+def location_key(location: str) -> str:
+    """Return the canonical grouping key for a raw extracted location string.
+
+    Prefers an explicit parenthetical qualifier, e.g. "(Lot 95 - Track
+    House)". Failing that, prefers a trailing em/en-dash-separated
+    qualifier with no parentheses, e.g. ", Lot 95 - Track House" (the
+    format used in STORY.md and seen in the real dataset). Otherwise falls
+    back to the full location string, same as before.
+
+    The street address for the same physical lot is written inconsistently
+    across articles (e.g. "Galvez Street" in one week, "Galvez Court" in
+    another), and the same lot/building qualifier is written with different
+    dash characters across articles too (an em dash in one week, an en dash
+    in another) - both are themselves small examples of why the prose alone
+    under-counts a repeat location. So whichever branch above supplies the
+    key, en dashes and em dashes in it are unified to a plain hyphen, so the
+    same lot/building pairing groups together regardless of which dash
+    character a given article happened to use.
+    """
+    paren_match = re.search(r"\(([^)]+)\)", location)
+    if paren_match:
+        key = paren_match.group(1)
+    else:
+        dash_match = DASH_QUALIFIER_PATTERN.search(location)
+        key = dash_match.group(1) if dash_match else location
+    key = re.sub(r"[–—]", "-", key)
+    return key.strip().lower()
+
 
 def extract_incidents(html: str):
     """Yield (location, sentence) pairs for vehicle-burglary items in one article."""
@@ -53,13 +91,7 @@ def main():
 
     for row in ds:
         for location, sentence in extract_incidents(row["html"]):
-            # Prefer the parenthetical lot/building name as the grouping
-            # key. The street address for the same physical lot is written
-            # inconsistently across articles (e.g. "Galvez Street" in one
-            # week, "Galvez Court" in another) - which is itself a small
-            # example of why the prose alone under-counts a repeat location.
-            paren_match = re.search(r"\(([^)]+)\)", location)
-            key = paren_match.group(1).strip().lower() if paren_match else location.strip().lower()
+            key = location_key(location)
             location_counts[key] += 1
             examples_by_location.setdefault(key, sentence)
 
