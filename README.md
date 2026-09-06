@@ -51,6 +51,7 @@ Python · [`datasets`](https://pypi.org/project/datasets/) (Hugging Face, datase
 - `notes/dataset-notes.md` - what from the dataset's structure and geography informed the story
 - `scripts/load_dataset.py` - reference script for loading and parsing the dataset
 - `scripts/explore_taxonomy.py` - reference script reproducing the location-frequency exploration that inspired the story
+- `tests/test_explore_taxonomy.py` - tests for the location-dedup logic in `scripts/explore_taxonomy.py`
 - `assets/campus-map.svg` - schematic map of the dataset's recurring locations
 - `LICENSE`
 
@@ -60,6 +61,13 @@ Python · [`datasets`](https://pypi.org/project/datasets/) (Hugging Face, datase
 pip install datasets beautifulsoup4
 python scripts/load_dataset.py
 python scripts/explore_taxonomy.py
+```
+
+To run the tests for the location-dedup logic (no network access required):
+
+```bash
+pip install pytest
+pytest tests/
 ```
 
 ## Limitations
