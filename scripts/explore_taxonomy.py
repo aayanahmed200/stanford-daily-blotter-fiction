@@ -18,8 +18,9 @@ from collections import Counter
 from bs4 import BeautifulSoup
 from datasets import load_dataset
 
-# Incident phrase to look for. "Burglary from a motor vehicle" and
-# "vehicle burglary" are the two phrasings the blotter actually uses.
+# Incident phrase to look for. "Burglary from a motor vehicle," "vehicle
+# burglary," and "burglary of a motor vehicle" are the three phrasings the
+# blotter actually uses.
 INCIDENT_PATTERN = re.compile(
     r"(burglary from a motor vehicle|vehicle burglary|burglary of a motor vehicle)",
     re.IGNORECASE,
@@ -28,9 +29,20 @@ INCIDENT_PATTERN = re.compile(
 # Crude location extractor: blotter items are written as
 # "... was reported at <location>." or "... occurred at <location>.",
 # with the location sometimes followed by a parenthetical building name.
+#
+# The location itself can contain periods of its own - campus buildings
+# and street abbreviations like "the d.school", "Rm. 214," or "Bldg. 20"
+# all show up in real entries. A plain "stop at the first period" capture
+# truncates those mid-word, so instead this only treats a period as the
+# END of the location when it's followed by whitespace-then-a-capital
+# letter (i.e. the start of a new sentence) or by the end of the string;
+# a period glued directly to more text or followed by a lowercase word or
+# a number is treated as part of the location, not a sentence boundary.
+# The capital-letter check is deliberately case-sensitive (via the scoped
+# `(?i:...)` on just the leading phrase) so it isn't defeated by the
+# pattern's own case-insensitive matching of "reported at"/"occurred at".
 LOCATION_PATTERN = re.compile(
-    r"(?:reported at|occurred at)\s+([^.]+?)(?:\.|$)",
-    re.IGNORECASE,
+    r"(?i:reported at|occurred at)\s+(.+?)(?:\.(?=\s+[A-Z]|\s*$)|$)"
 )
 
 # A qualifier that names the specific lot/building without parentheses,
