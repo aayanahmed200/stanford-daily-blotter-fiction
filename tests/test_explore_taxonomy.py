@@ -174,3 +174,58 @@ def test_dash_qualifier_pattern_does_not_fire_on_bare_hyphen():
     hyphen (e.g. a hyphenated address range), to avoid over-eagerly
     reinterpreting unrelated text as a lot/building qualifier."""
     assert explore_taxonomy.DASH_QUALIFIER_PATTERN.search("123-125 Main Street") is None
+
+
+# Real-world locations that contain a period of their own - abbreviated
+# streets/rooms/buildings, or a name like the d.school that just happens to
+# have one baked in. LOCATION_PATTERN used to stop at the FIRST period after
+# "reported at"/"occurred at" no matter what, silently truncating these mid
+# word (e.g. "the d.school." -> "the d").
+PERIOD_IN_LOCATION_GLUED = "Vandalism was reported at the d.school."
+PERIOD_IN_LOCATION_ABBREV_NUMBER = (
+    "Burglary from a motor vehicle was reported at 450 Serra Mall, Rm. 214."
+)
+PERIOD_IN_LOCATION_ABBREV_BUILDING = (
+    "Burglary from a motor vehicle was reported at Escondido Village, Bldg. 20."
+)
+NO_TRAILING_PERIOD = "Vehicle burglary reported at Wilbur Hall"
+TRAILING_SENTENCE_AFTER_LOCATION = (
+    "Vandalism was reported at the d.school. Case remains open."
+)
+
+
+def test_period_glued_to_location_is_not_truncated():
+    """The bug: a period with no space after it (as in "d.school") is part
+    of the location's own name, not a sentence boundary, and must not cut
+    the capture short."""
+    assert extract_location(PERIOD_IN_LOCATION_GLUED) == "the d.school"
+
+
+def test_period_before_room_number_is_not_truncated():
+    """An abbreviation like "Rm." followed by a number is not a sentence
+    boundary either - the location continues past it."""
+    assert (
+        extract_location(PERIOD_IN_LOCATION_ABBREV_NUMBER)
+        == "450 Serra Mall, Rm. 214"
+    )
+
+
+def test_period_before_building_number_is_not_truncated():
+    """Same shape as the room-number case, for a building abbreviation."""
+    assert (
+        extract_location(PERIOD_IN_LOCATION_ABBREV_BUILDING)
+        == "Escondido Village, Bldg. 20"
+    )
+
+
+def test_location_with_no_trailing_period_still_matches():
+    """The end-of-string fallback (for a location with no punctuation at
+    all after it) must keep working alongside the period-handling fix."""
+    assert extract_location(NO_TRAILING_PERIOD) == "Wilbur Hall"
+
+
+def test_real_sentence_boundary_after_location_still_stops_there():
+    """Guard against overcorrecting: a period that IS followed by a new,
+    capitalized sentence must still end the location capture there, rather
+    than swallowing the next sentence too."""
+    assert extract_location(TRAILING_SENTENCE_AFTER_LOCATION) == "the d.school"
