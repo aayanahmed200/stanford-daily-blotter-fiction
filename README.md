@@ -4,16 +4,15 @@
 
 A short fictional story inspired by patterns in a dataset of 139 Stanford Daily police-blotter articles published between 2021 and 2026.
 
-**Full story:** [`STORY.md`](STORY.md)
+**[Read the story](STORY.md)**
 
 ## Overview
 
-Lot 95 uses recurring categories and locations in the public dataset as a starting point for fiction. It is a story, not a report or a reconstruction of an actual case.
+Lot 95 uses recurring categories and locations in the public dataset as a starting point for fiction.
 
 ## Highlights
 
 - Uses the difference between written summaries and structured category labels as inspiration.
-- Keeps the fictional events separate from the source reporting.
 - Includes dataset notes and scripts for loading and exploring the source material.
 
 ## Technology
@@ -28,8 +27,16 @@ python scripts/load_dataset.py
 python scripts/explore_taxonomy.py
 ```
 
-Run tests with `pip install pytest` followed by `pytest tests/`.
+Run tests with:
 
+```bash
+pip install pytest
+pytest tests/
+```
+
+## Notes and limitations
+
+Lot 95 is fiction, not a report or reconstruction of an actual case. The story is inspired by patterns in the dataset; its characters and events are not claims about real people or incidents.
 
 ## License
 
