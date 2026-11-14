@@ -8,19 +8,17 @@ A short fictional story inspired by patterns in a dataset of 139 Stanford Daily 
 
 ## Overview
 
-Lot 95 uses the repetitive categories and locations in the public dataset as a starting point for fiction. It is a story, not a report or a reconstruction of an actual case.
+Lot 95 uses recurring categories and locations in the public dataset as a starting point for fiction. It is a story, not a report or a reconstruction of an actual case.
 
-## Fiction disclaimer
+## Highlights
 
-Characters, the investigation, and the events in the story are invented. The recurring vehicle-burglary pattern associated with Lot 95 is present in the source dataset; the story built around that pattern is fictional. Other campus locations are used as setting, not as claims about real incidents.
-
-## Data and approach
-
-The source dataset contains article metadata, raw HTML, and category/tag taxonomies. The project uses the differences between the written summaries and their structured labels as inspiration. The story does not copy a specific incident, date, or case.
+- Uses the difference between written summaries and structured category labels as inspiration.
+- Keeps the fictional events separate from the source reporting.
+- Includes dataset notes and scripts for loading and exploring the source material.
 
 ## Technology
 
-Python, Hugging Face `datasets`, and Beautiful Soup for loading and examining the source material.
+Python, Hugging Face `datasets`, and Beautiful Soup.
 
 ## Run locally
 
@@ -30,15 +28,11 @@ python scripts/load_dataset.py
 python scripts/explore_taxonomy.py
 ```
 
-Run the tests with `pip install pytest` followed by `pytest tests/`.
+Run tests with `pip install pytest` followed by `pytest tests/`.
 
-## Project files
+## Notes and limitations
 
-- `STORY.md` — the short story, Lot 95.
-- `notes/dataset-notes.md` — dataset structure and research notes.
-- `scripts/` — dataset loading and taxonomy exploration.
-- `tests/` — location-deduplication tests.
-- `assets/campus-map.svg` — schematic of recurring dataset locations.
+Characters, the investigation, and the events in the story are invented. The recurring vehicle-burglary pattern associated with Lot 95 appears in the source dataset; the story built around it is fictional. Other campus locations provide setting, not claims about real incidents. The source dataset is available as [`stanforddams/daily`](https://huggingface.co/datasets/stanforddams/daily) and remains subject to its own terms.
 
 ## Contributors
 
@@ -46,4 +40,4 @@ Run the tests with `pip install pytest` followed by `pytest tests/`.
 
 ## License
 
-MIT — see `LICENSE`. The underlying dataset is available as [`stanforddams/daily`](https://huggingface.co/datasets/stanforddams/daily) and remains subject to its own terms.
+MIT — see `LICENSE`.
