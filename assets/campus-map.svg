@@ -1,0 +1,97 @@
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="900" height="700" fill="#f7f5f0"/>
+
+  <!-- title -->
+  <text x="40" y="46" font-size="23" font-weight="700" fill="#1a1a1a">Recurring locations in the dataset</text>
+  <text x="40" y="68" font-size="13" fill="#6b6b6b">Schematic, not to scale &#8212; for orientation only</text>
+  <line x1="40" y1="84" x2="860" y2="84" stroke="#e2ddd2" stroke-width="1.5"/>
+
+  <!-- ============ ROADS (drawn first, under zones) ============ -->
+  <g fill="none" stroke-linecap="round">
+    <!-- outer loop road, bottom -->
+    <path d="M 55,565 C 260,625 610,625 845,515" stroke="#d9d3c4" stroke-width="12"/>
+    <path d="M 55,565 C 260,625 610,625 845,515" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 8"/>
+    <!-- vertical edge road (right side) -->
+    <path d="M 862,96 L 862,555" stroke="#d9d3c4" stroke-width="12"/>
+    <path d="M 862,96 L 862,555" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 8"/>
+    <!-- connectors into Lot 95 hub -->
+    <path d="M 248,472 C 318,452 360,420 402,392" stroke="#d9d3c4" stroke-width="11"/>
+    <path d="M 248,472 C 318,452 360,420 402,392" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 7"/>
+    <path d="M 262,238 C 322,268 362,288 402,308" stroke="#d9d3c4" stroke-width="11"/>
+    <path d="M 262,238 C 322,268 362,288 402,308" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 7"/>
+    <path d="M 520,298 C 570,258 610,222 652,190" stroke="#d9d3c4" stroke-width="11"/>
+    <path d="M 520,298 C 570,258 610,222 652,190" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 7"/>
+    <path d="M 520,382 C 580,402 618,418 656,430" stroke="#d9d3c4" stroke-width="11"/>
+    <path d="M 520,382 C 580,402 618,418 656,430" stroke="#ffffff" stroke-width="2" stroke-dasharray="2 7"/>
+  </g>
+
+  <!-- road name labels -->
+  <text x="450" y="612" font-size="11" fill="#8a8272" text-anchor="middle" letter-spacing="0.5">CAMPUS DRIVE</text>
+  <text x="878" y="330" font-size="11" fill="#8a8272" text-anchor="middle" letter-spacing="0.5" transform="rotate(90 878 330)">EL CAMINO REAL</text>
+
+  <!-- directional chevrons along connector roads -->
+  <g fill="#ffffff" stroke="#b9b09a" stroke-width="0.75">
+    <polygon points="330,441 340,436 338,447" transform="rotate(-18 335 441)"/>
+    <polygon points="332,262 342,260 337,270" transform="rotate(28 337 264)"/>
+    <polygon points="588,236 598,232 596,243" transform="rotate(-42 593 237)"/>
+    <polygon points="590,408 600,405 597,416" transform="rotate(24 595 410)"/>
+  </g>
+
+  <!-- ============ ZONES ============ -->
+
+  <!-- Escondido Village (grad residences) -->
+  <polygon points="70,410 230,395 275,460 245,545 100,545 55,480" fill="#1f6f6b" stroke="#15514e" stroke-width="1.5"/>
+  <text x="163" y="465" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Escondido Village</text>
+  <text x="163" y="483" font-size="11" fill="#cfe7e5" text-anchor="middle">grad residences</text>
+
+  <!-- Wilbur Hall (residence) -->
+  <polygon points="130,150 300,125 335,190 290,255 170,250 110,205" fill="#2c5c7a" stroke="#1e4459" stroke-width="1.5"/>
+  <text x="222" y="192" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Wilbur Hall</text>
+  <text x="222" y="210" font-size="11" fill="#cfe0ec" text-anchor="middle">residence</text>
+
+  <!-- Lot 95 (hub / anchor) -->
+  <polygon points="345,300 460,255 560,300 545,400 430,430 340,380" fill="#8c1515" stroke="#601010" stroke-width="1.5"/>
+  <text x="450" y="335" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">Lot 95</text>
+  <text x="450" y="354" font-size="11" fill="#f0c9c9" text-anchor="middle">parking, residential edge</text>
+
+  <!-- Cobb Track / Angell Field (athletic) -->
+  <polygon points="580,105 775,88 855,165 832,285 640,308 560,225" fill="#3f7a3a" stroke="#2c5628" stroke-width="1.5"/>
+  <text x="715" y="128" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Cobb Track</text>
+  <ellipse cx="715" cy="212" rx="115" ry="58" fill="none" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+  <text x="715" y="217" font-size="12" fill="#ffffff" text-anchor="middle">Angell Field</text>
+
+  <!-- Dept / dorm parking (scattered lots), grouped as one cluster -->
+  <rect x="618" y="392" width="110" height="46" rx="4" fill="#c9a227" stroke="#9c7e1c" stroke-width="1.5"/>
+  <rect x="618" y="444" width="110" height="46" rx="4" fill="#c9a227" stroke="#9c7e1c" stroke-width="1.5"/>
+  <text x="673" y="537" font-size="14" font-weight="700" fill="#4a3c0d" text-anchor="middle">Dept / dorm parking</text>
+  <text x="673" y="553" font-size="11" fill="#6b5a17" text-anchor="middle">scattered lots</text>
+
+  <!-- ============ LEGEND ============ -->
+  <rect x="40" y="592" width="820" height="66" rx="8" fill="#ffffff" stroke="#e2ddd2" stroke-width="1.5"/>
+  <text x="60" y="612" font-size="11" font-weight="700" fill="#4a4a4a" letter-spacing="0.5">LOCATIONS NAMED IN &#8220;LOT 95&#8221; AND RECURRING IN THE DATASET</text>
+
+  <g font-size="12.5" fill="#2a2a2a">
+    <rect x="60" y="632" width="14" height="14" rx="2" fill="#8c1515"/>
+    <text x="80" y="643">Lot 95</text>
+
+    <rect x="163" y="632" width="14" height="14" rx="2" fill="#2c5c7a"/>
+    <text x="183" y="643">Wilbur Hall</text>
+
+    <rect x="302" y="632" width="14" height="14" rx="2" fill="#1f6f6b"/>
+    <text x="322" y="643">Escondido Village</text>
+
+    <rect x="492" y="632" width="14" height="14" rx="2" fill="#3f7a3a"/>
+    <text x="512" y="643">Cobb Track</text>
+
+    <rect x="624" y="632" width="14" height="14" rx="2" fill="#c9a227"/>
+    <text x="644" y="643">Dept / dorm parking</text>
+  </g>
+
+  <!-- north arrow -->
+  <g transform="translate(838,44)">
+    <circle cx="0" cy="0" r="22" fill="#ffffff" stroke="#d9d3c4" stroke-width="1.5"/>
+    <line x1="0" y1="14" x2="0" y2="-10" stroke="#3a3a3a" stroke-width="2"/>
+    <polygon points="0,-16 -5,-6 5,-6" fill="#3a3a3a"/>
+    <text x="0" y="27" font-size="11" fill="#3a3a3a" text-anchor="middle">N</text>
+  </g>
+</svg>
