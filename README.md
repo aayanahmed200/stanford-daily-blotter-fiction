@@ -32,11 +32,8 @@ Run tests with `pip install pytest` followed by `pytest tests/`.
 
 ## Notes and limitations
 
-Characters, the investigation, and the events in the story are invented. The recurring vehicle-burglary pattern associated with Lot 95 appears in the source dataset; the story built around it is fictional. Other campus locations provide setting, not claims about real incidents. The source dataset is available as [`stanforddams/daily`](https://huggingface.co/datasets/stanforddams/daily) and remains subject to its own terms.
+Characters, the investigation, and the events in the story are invented. The recurring vehicle-burglary pattern associated with Lot 95 appears in the source dataset; the story built around it is fictional. Other campus locations provide setting, not claims about real incidents. The source dataset is available as [`stanforddams/daily`](https://huggingface.co/datasets/stanforddams/daily) and remains subject to its own terms. Contributor: [@timofeywheat-wq](https://github.com/timofeywheat-wq).
 
-## Contributors
-
-- [@timofeywheat-wq](https://github.com/timofeywheat-wq)
 
 ## License
 
