@@ -2,6 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Hugging Face](https://img.shields.io/badge/hugging%20face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
+**Repository:** [stanford-daily-blotter-fiction](https://github.com/aayanahmed200/stanford-daily-blotter-fiction)
 
 A short story of crime at Stanford, written from [`stanforddams/daily`](https://huggingface.co/datasets/stanforddams/daily), a dataset of 139 police blotter articles published by the Stanford Daily between 2021 and 2026. The dataset covers weekly incident summaries reported to the Stanford University Department of Public Safety (SUDPS), across campus residences, academic buildings, and parking lots.
 
@@ -13,11 +14,11 @@ Full story: [`STORY.md`](STORY.md)
 
 One important caveat on top of the usual disclaimer: the story's setting — repeat vehicle burglaries clustering at a lot called "Lot 95" (295 Galvez Street, next to the Track House) — is not purely invented background. It's a real, recurring pattern in the dataset: burglary from a motor vehicle is reported at that exact real address multiple times across the 139 articles, including two same-day incidents. The *character* (Priya), the *investigation*, the *coaches-at-a-meet* explanation, and the *arrest* are all invented. The *fact that Lot 95 sees repeat vehicle burglaries* is not — it's what's actually in the public record. If you're familiar with the Daily's blotter, don't read this as a dramatization of a real case; the specific story built on top of that real pattern is fiction.
 
-## Why this exists
+## Overview
 
 The Daily's blotter turns campus crime into a fixed, repetitive vocabulary - bike theft, vehicle burglary, petty theft from a building - tagged day by day, location by location, week after week. Reading enough of it in one sitting, the pattern of the format starts to feel like a story on its own: a narrator who only ever sees crime through categories and codes, and has to notice what the categories miss. "Lot 95" is that idea worked into fiction rather than an EDA writeup. The characters and case are invented; the campus geography is real.
 
-## The data
+## Data & methodology
 
 The dataset ships three files: `index.json` for per-article metadata (title, author, url, date, category and tag IDs), `train.jsonl` for the raw HTML body of each article, and `taxonomy.json`, which resolves the numeric category and tag IDs into labels like "bike theft" or "hate violence." The article HTML needs to be parsed (BeautifulSoup, per the dataset card) before the actual blotter text is usable - most of each page is site navigation and footer links.
 
@@ -32,7 +33,7 @@ No article's specific incidents, dates, or content were copied into the story - 
 - **Recurring locations:** residential lots (including Lot 95), Escondido Village, Wilbur Hall, and athletic facilities around Cobb Track and Angell Field, alongside scattered department and dorm parking areas
 - **Incident types:** a fixed taxonomy of categories and tags - petty theft, bike theft, burglary from a motor vehicle, vandalism, grand theft, and hate violence among them - resolved from `taxonomy.json`
 
-## Campus map
+## Data geography
 
 The places that recur across the dataset, and that anchor the story's setting:
 
@@ -40,12 +41,12 @@ The places that recur across the dataset, and that anchor the story's setting:
 
 This is a schematic for orientation, not a to-scale campus map - it exists to show how often the same handful of places recur in the blotter, not to map incidents precisely.
 
-## Tech stack
+## Technology
 
 Python · [`datasets`](https://pypi.org/project/datasets/) (Hugging Face, dataset loading) ·
 `beautifulsoup4` (HTML parsing)
 
-## Project structure
+## Repository structure
 
 - `STORY.md` - the short story, "Lot 95"
 - `notes/dataset-notes.md` - what from the dataset's structure and geography informed the story
@@ -55,7 +56,7 @@ Python · [`datasets`](https://pypi.org/project/datasets/) (Hugging Face, datase
 - `assets/campus-map.svg` - schematic map of the dataset's recurring locations
 - `LICENSE`
 
-## Setup
+## Run locally
 
 ```bash
 pip install datasets beautifulsoup4
