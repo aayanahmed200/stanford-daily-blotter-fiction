@@ -91,6 +91,7 @@ TEMPLATE = """<!DOCTYPE html>
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <span>Stanford Daily Tech Bootcamp · data journalism</span>
+    <span class="site-footer__series">Series: <a href="https://aayanahmed200.github.io/stanford-daily-price-of-prestige/">The Price of Prestige</a> · <a href="https://aayanahmed200.github.io/stanford-daily-plasticlist-eda/">PlasticList</a> · <a href="https://aayanahmed200.github.io/stanford-daily-biglocal-ice-pipeline/">ICE pipeline</a></span>
     <span><a href="https://github.com/aayanahmed200/stanford-daily-blotter-fiction">Repository</a> · <a href="https://github.com/TheStanfordDaily/tech-practicum">Practicum</a></span>
   </div>
 </footer>
