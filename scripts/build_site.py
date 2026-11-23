@@ -46,9 +46,15 @@ TEMPLATE = """<!DOCTYPE html>
 <header class="masthead">
   <div class="wrap masthead__inner">
     <a class="masthead__series" href="https://github.com/aayanahmed200">Stanford Daily · Data</a>
-    <nav class="masthead__nav" aria-label="Series">
+    <div class="masthead__right">
+      <nav class="masthead__nav" aria-label="Series">
 {nav}
-    </nav>
+      </nav>
+      <a class="masthead__gh" href="https://github.com/aayanahmed200" rel="me">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <span>aayanahmed200</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -61,6 +67,15 @@ TEMPLATE = """<!DOCTYPE html>
   <article class="prose">
 {story}
   </article>
+
+  <section class="refs" aria-labelledby="references">
+    <h2 id="references">References</h2>
+    <ol>
+      <li>Stanford Daily police-blotter dataset, <code>stanforddams/daily</code> (139 articles, September 2021 to June 2026). <a href="https://huggingface.co/datasets/stanforddams/daily">huggingface.co/datasets/stanforddams/daily</a></li>
+      <li>The Stanford Daily. SUDPS blotter summaries, published weekly. <a href="https://stanforddaily.com/">stanforddaily.com</a></li>
+      <li>Dataset notes and the taxonomy exploration that produced the location counts: <a href="https://github.com/aayanahmed200/stanford-daily-blotter-fiction">github.com/aayanahmed200/stanford-daily-blotter-fiction</a></li>
+    </ol>
+  </section>
 
   <div class="aside">
     <p><strong>What this is built from.</strong> The story draws on a dataset of 139 Stanford Daily police-blotter articles published between 2021 and 2026: the categories the paper files each item under, the locations that recur, and the gap between a short written summary and the structured labels attached to it. The dataset notes and the taxonomy scripts live in the repository.</p>
