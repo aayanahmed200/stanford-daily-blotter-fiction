@@ -33,6 +33,8 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lot 95 — a short story from the Stanford Daily blotter — Stanford Daily</title>
 <meta name="description" content="A short story built from recurring categories and locations in a dataset of 139 Stanford Daily police-blotter articles.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="canonical" href="https://aayanahmed200.github.io/stanford-daily-blotter-fiction/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lot 95">
@@ -45,7 +47,7 @@ TEMPLATE = """<!DOCTYPE html>
 
 <header class="masthead">
   <div class="wrap masthead__inner">
-    <a class="masthead__series" href="https://github.com/aayanahmed200">Stanford Daily · Data</a>
+    <a class="masthead__series" href="https://aayanahmed200.github.io/stanford-daily-data/">Stanford Daily · Data</a>
     <div class="masthead__right">
       <nav class="masthead__nav" aria-label="Series">
 {nav}
