@@ -134,6 +134,12 @@ def render(markdown):
         else:
             paragraph.append(line)
     flush()
+    # A single line followed by a rule is the story's deck, not its opening
+    # paragraph. Keeping it in a <header> keeps it out of the shared drop-cap
+    # rule, which applies to the first paragraph of .prose and needs to land
+    # on the first line of the story instead.
+    if len(blocks) > 1 and blocks[0].startswith("<p>") and blocks[1] == "<hr>":
+        blocks[0] = "<header>" + blocks[0] + "</header>"
     return "\n\n".join(blocks)
 
 
