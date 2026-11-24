@@ -1,42 +1,57 @@
-# Stanford Daily: Blotter Fiction
+# Lot 95 — Stanford Daily Blotter Fiction
 
-**Live:** [aayanahmed200.github.io/stanford-daily-blotter-fiction](https://aayanahmed200.github.io/stanford-daily-blotter-fiction/)
+> A work of fiction inspired by recurring categories and locations in 139 Stanford Daily police-blotter articles published between 2021 and 2026.
 
-**Series:** [The Price of Prestige](https://aayanahmed200.github.io/stanford-daily-price-of-prestige/) · [PlasticList](https://aayanahmed200.github.io/stanford-daily-plasticlist-eda/) · [ICE pipeline](https://aayanahmed200.github.io/stanford-daily-biglocal-ice-pipeline/)
+**Live story:** [aayanahmed200.github.io/stanford-daily-blotter-fiction](https://aayanahmed200.github.io/stanford-daily-blotter-fiction/)
+
+**Stanford Daily series:** [The Price of Prestige](https://aayanahmed200.github.io/stanford-daily-price-of-prestige/) · [PlasticList EDA](https://aayanahmed200.github.io/stanford-daily-plasticlist-eda/) · [ICE Extraction Pipeline](https://aayanahmed200.github.io/stanford-daily-biglocal-ice-pipeline/)
 
 [![Python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/) [![Hugging Face](https://img.shields.io/badge/hugging%20face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/) [![GitHub Actions](https://img.shields.io/badge/github%20actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
 
-A short fictional story inspired by patterns in a dataset of 139 Stanford Daily police-blotter articles published between 2021 and 2026.
-
 ## Overview
 
-Lot 95 uses the recurring categories and locations in the public dataset as a starting point for fiction, and the gap between a short written summary and the structured labels attached to it as its subject.
+`Lot 95` is a short fictional story that uses patterns in a public Stanford Daily police-blotter dataset as a creative starting point. It draws on recurring categories and locations, and on the gap between a brief written summary and the structured labels attached to it.
 
-## How it was made
+The dataset exploration informs the setting and themes; it is not used to reconstruct an actual incident.
 
-The dataset came first. `scripts/load_dataset.py` pulls the Stanford Daily police-blotter set from Hugging Face, and `scripts/explore_taxonomy.py` counts the recurring categories and locations to find the patterns worth writing around, with notes on what the set contains and how it was filtered in `notes/dataset-notes.md`.
+## What the repository includes
 
-The story itself is written in `STORY.md`, which is the canonical text. `scripts/build_site.py` turns that file into the typeset reading page in `site/`, so the prose is only ever edited in one place and the page is generated rather than hand-maintained. The page uses the shared series stylesheet, and a GitHub Actions workflow publishes `site/` on every push to `main`. A small pytest file covers the taxonomy script.
+- The canonical story text in Markdown.
+- A generated, typeset reading page published on GitHub Pages.
+- Scripts for loading the source dataset and exploring recurring categories and locations.
+- Dataset notes explaining what the source contains and how it was filtered.
+- A small test suite for the taxonomy exploration code.
 
-## Highlights
+## Implementation
 
-- Uses the difference between written summaries and structured category labels as inspiration.
-- Ships the story as both Markdown and a typeset reading page, generated from a single source.
-- Includes dataset notes and scripts for loading and exploring the source material.
+The source dataset is loaded from Hugging Face by `scripts/load_dataset.py`. `scripts/explore_taxonomy.py` counts recurring categories and locations. The story itself lives in `STORY.md`; `scripts/build_site.py` generates `site/index.html` from that source so the published page and story text do not need to be edited separately.
 
-## Repository contents
+The site uses the shared stylesheet from the Stanford Daily data-journalism series. GitHub Actions publishes the contents of `site/` to GitHub Pages on pushes to `main`.
 
-- `STORY.md` — the canonical story text; edit this, not the page.
-- `site/` — the published reading page and the shared series stylesheet.
-- `scripts/build_site.py` — regenerates `site/index.html` from `STORY.md`.
-- `scripts/load_dataset.py`, `scripts/explore_taxonomy.py` — load the dataset and inspect its categories.
-- `notes/dataset-notes.md` — what the dataset contains and how it was filtered.
-- `tests/` — checks for the taxonomy script.
+## Repository structure
 
-## Notes and limitations
+- `STORY.md` — canonical story text; edit this file rather than the generated page.
+- `scripts/build_site.py` — generates the published HTML page from `STORY.md`.
+- `scripts/load_dataset.py` and `scripts/explore_taxonomy.py` — load and inspect the source dataset.
+- `notes/dataset-notes.md` — source and filtering notes.
+- `site/` — generated reading page and shared series stylesheet.
+- `tests/` — tests for the taxonomy script.
+- `.github/workflows/pages.yml` — GitHub Pages publishing workflow.
 
-Lot 95 is fiction, not a report or reconstruction of an actual case. The story is inspired by patterns in the dataset; its characters, dialogue and events are not claims about real people or incidents. The published page is generated from `STORY.md`, so it has to be rebuilt after any edit to the story.
+## Run locally
+
+Regenerate the reading page after editing `STORY.md`:
+
+```bash
+python scripts/build_site.py
+```
+
+Then open `site/index.html` in a browser or serve the `site/` directory with a local static web server. The build script uses Python's standard library.
+
+## Status and limitations
+
+This repository contains fiction, not reporting, a case reconstruction, or claims about real people or incidents. Its characters, dialogue, and events are invented. The story is inspired by aggregate patterns in the dataset; no event described in it should be read as a factual account.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT. See [LICENSE](LICENSE).
