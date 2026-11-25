@@ -14,7 +14,7 @@
 
 The dataset exploration informs the setting and themes; it is not used to reconstruct an actual incident.
 
-## What the repository includes
+## Highlights
 
 - The canonical story text in Markdown.
 - A generated, typeset reading page published on GitHub Pages.
