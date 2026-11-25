@@ -38,19 +38,9 @@ The site uses the shared stylesheet from the Stanford Daily data-journalism seri
 - `tests/` — tests for the taxonomy script.
 - `.github/workflows/pages.yml` — GitHub Pages publishing workflow.
 
-## Run locally
-
-Regenerate the reading page after editing `STORY.md`:
-
-```bash
-python scripts/build_site.py
-```
-
-Then open `site/index.html` in a browser or serve the `site/` directory with a local static web server. The build script uses Python's standard library.
-
 ## Status and limitations
 
-This repository contains fiction, not reporting, a case reconstruction, or claims about real people or incidents. Its characters, dialogue, and events are invented. The story is inspired by aggregate patterns in the dataset; no event described in it should be read as a factual account.
+This repository contains fiction, not reporting, a case reconstruction, or claims about real people or incidents. Its characters, dialogue, and events are invented. The story is inspired by aggregate patterns in the dataset; no event described in it should be read as a factual account. The page build uses only Python's standard library, so it needs no extra dependencies.
 
 ## License
 
